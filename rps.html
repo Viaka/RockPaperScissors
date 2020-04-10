@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+
+    //const playerSelection = 'rock'
+    
+    console.log(game())
+
+    function game(){
+        let c = 0;
+        let p = 0;
+        let result = "";    
+        
+        
+        for(let x = 0; x < 5; x++){
+        result = playRound(prompt("Rock, Paper or Scissors? "), computerPlay()).toString();
+            if (result == "c"){
+                c++;
+            }
+            else if (result == "p") {
+                p++;
+            }
+        }
+        
+        if (p > c){
+            return "Player wins, " + p + " points to " + c;
+        }
+        else if (c > p){
+            return "Computer wins, " + c + " points to " + p;            
+        }
+        else {
+            return "No contest";
+        }
+   
+
+        function playRound(playerSelection, computerSelection) {
+        playerSelection = playerSelection.toLowerCase();
+        if (playerSelection == "rock"){
+            if (computerSelection == "rock"){
+                console.log("Rock vs Rock?  Tie Game!");
+                return 0;
+            }
+            else if (computerSelection == "paper"){
+                console.log("Paper beats Rock, you lose!");
+                return "c";
+            }
+            else if (computerSelection == "scissors"){
+                console.log("Rock beats Scissors, you win!");
+                return "p";
+            }
+        }
+        else if (playerSelection == "paper"){
+            if (computerSelection == "rock"){
+                console.log( "Paper beats Rock, you win!");
+                return "p";
+            }
+            else if (computerSelection == "paper"){
+                console.log( "Paper vs Paper? Tie Game!");
+                return 0;
+            }
+            else if (computerSelection == "scissors"){
+                console.log( "Scissors beats Paper, you lose!");
+                return "c";
+            }
+        }
+        else if (playerSelection == "scissors"){
+            if (computerSelection == "rock"){
+                console.log( "Rock beats Scissors, you lose!");
+                return "c";
+            }
+            else if (computerSelection == "paper"){
+                console.log( "Scissors beats Paper, you win!");
+                return "p";
+            }
+            else if (computerSelection == "scissors"){
+                console.log( "Scissors vs Scissors? Tie Game!");
+                return 0;
+            }
+        }
+        else {
+            console.log("Invalid selection.  Only Rock, Paper, and Scissors are valid inputs");
+            return 0;
+        }
+    }    
+
+    }
+
+    function computerPlay(){
+        let a = Math.floor(Math.random() * 3);
+        switch(a){
+            case 0:
+                return "rock";
+            break;
+            case 1:
+                return "paper";
+            break;
+            case 2:
+                return "scissors";
+            break;
+            default:
+                return "error";
+        }    
+    }
+
+    
+
+</script>
+</body>
+</html>
